@@ -10,14 +10,26 @@ body {
   padding: 0 16px;
 }
 
-header {
+.Appdark {
+  background-color: #1b1914;
+  margin: auto -16px;
+  padding: 5px 5px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.Applight h1 {
+  color: rgb(2, 1, 1);
+  font-family: "McLaren", cursive;
+  font-weight: 100;
+}
+.Applight {
   background-color: #f5ba13;
   margin: auto -16px;
   padding: 5px 5px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
 }
 
-header h1 {
+.Appdark h1 {
   color: #fff;
   font-family: "McLaren", cursive;
   font-weight: 100;

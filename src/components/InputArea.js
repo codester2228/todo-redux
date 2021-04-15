@@ -3,9 +3,10 @@ import { PrimaryButton, TextField } from "@fluentui/react";
 import Calendar from "./Calendar.js";
 import DropDown from "./DropDown.js";
 import { useDispatch, useSelector } from "react-redux";
-import { AddTodoAction } from "../actions/AddTodoActions.js";
+import { AddTodoAction, SwitchTheme } from "../actions/AddTodoActions.js";
 import { useHistory } from "react-router-dom";
 import Note from "./Note.js";
+import "../InputArea.css";
 
 function InputArea() {
   const [todo, setTodo] = useState({
@@ -15,7 +16,6 @@ function InputArea() {
     date: "",
     status: "",
   });
-  const [count, setCount] = useState(0);
 
   function handleChange(event) {
     var input = event.target.name;
@@ -50,6 +50,9 @@ function InputArea() {
   const Todo = useSelector((state) => state.Todo); //reducer name was Todo,useselector to select our state
   const { todos } = Todo; //extracting todos array from Todo
 
+  var Theme = useSelector((state) => state.Theme);
+  var { darktheme } = Theme;
+
   let history = useHistory();
 
   const redirect = () => {
@@ -66,7 +69,7 @@ function InputArea() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(count);
+
     let _id = Math.floor(Math.random() * 1000 + 1);
     let i = 0;
     while (i < todos.length) {
@@ -95,6 +98,8 @@ function InputArea() {
       />
     );
   }
+
+  console.log(darktheme);
 
   return (
     <>
@@ -125,7 +130,13 @@ function InputArea() {
           type="submit"
           className="btn-save"
           disabled={todo.title === "" || todo.description === ""}
-          onClick={() => setCount(count + 1)}
+        />
+        <PrimaryButton
+          text="Change Theme"
+          className="btn-save"
+          onClick={(e) => {
+            dispatch(SwitchTheme());
+          }}
         />
       </form>
 

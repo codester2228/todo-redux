@@ -63,7 +63,7 @@ const controlClass = mergeStyleSets({
 });
 
 const Calendar = (props) => {
-  const [firstDayOfWeek, setFirstDayOfWeek] = React.useState(DayOfWeek.Sunday);
+  const [firstDayOfWeek] = React.useState(DayOfWeek.Sunday);
 
   return (
     <div>
