@@ -5,6 +5,7 @@ import DropDown from "./DropDown.js";
 import { useDispatch, useSelector } from "react-redux";
 import { AddTodoAction } from "../actions/AddTodoActions.js";
 import { useHistory } from "react-router-dom";
+import Note from "./Note.js";
 
 function InputArea() {
   const [todo, setTodo] = useState({
@@ -82,6 +83,19 @@ function InputArea() {
     redirect();
   }
 
+  function printNotes(item) {
+    return (
+      <Note
+        key={item.id}
+        id={item.id}
+        title={item.title}
+        description={item.description}
+        due={item.date}
+        status={item.status}
+      />
+    );
+  }
+
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -115,17 +129,7 @@ function InputArea() {
         />
       </form>
 
-      <ul>
-        {todos &&
-          todos.map((t) => (
-            <li key={t.id}>
-              <span>{t.title} </span>
-              <span>{t.description} </span>
-              <span>{t.status} </span>
-              <span>{t.date} </span>
-            </li>
-          ))}
-      </ul>
+      {todos && todos.map(printNotes)}
     </>
   );
 }
